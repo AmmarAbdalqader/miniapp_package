@@ -10,6 +10,7 @@ class TaxiAppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(userId);
+    return Container(
+        width: 300, height: 400, color: Colors.cyan, child: Text(userId));
   }
 }

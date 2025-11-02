@@ -7,6 +7,7 @@ class TaxiView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: InkWell(
         onTap: () => onSuccess("ammar"),
         child: ListView.separated(
@@ -16,7 +17,7 @@ class TaxiView extends StatelessWidget {
             title: Text("Title"),
             subtitle:
                 Text('sub title sub title sub title sub title sub title '),
-            leading: Image.asset('packages/miniapp_package/assets/logos/${index%2==0?'careem':'uber'}.png'),
+            leading: Image.asset('assets/logos/${index%2==0?'careem':'uber'}.png'),
           ),
         ),
       ),

@@ -15,10 +15,14 @@ class TaxiView extends StatelessWidget {
               Column(
                 children: [
                   Image.asset(
-                      'packages/miniapp_package/assets/logos/${index % 2 == 0 ? 'careem' : 'uber'}.png'),
+                      'packages/miniapp_package/assets/logos/${index % 2 == 0 ? 'careem' : 'uber'}.png',
+                    package: 'miniapp_package',
+                  ),
                   const SizedBox(height: 12),
                   Image.asset(
-                      'packages/miniapp_package/assets/logos/${index % 2 == 1 ? 'sedan' : 'suv'}.png'),
+                      'packages/miniapp_package/assets/logos/${index % 2 == 1 ? 'sedan' : 'suv'}.png',
+                    package: 'miniapp_package',
+                  ),
                 ],
               ),
               Expanded(

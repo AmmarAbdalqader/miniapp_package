@@ -5,22 +5,34 @@ class TaxiView extends StatelessWidget {
   const TaxiView({super.key, required this.onSuccess});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: InkWell(
-        onTap: () => onSuccess("ammar"),
-        child: ListView.separated(
+  Widget build(BuildContext context) => Scaffold(
+        backgroundColor: Colors.white,
+        body: ListView.separated(
           itemCount: 100,
           separatorBuilder: (context, index) => const Divider(),
-          itemBuilder: (context, index) => ListTile(
-            title: Text("Title"),
-            subtitle:
-                Text('sub title sub title sub title sub title sub title '),
-            leading: Image.asset('assets/logos/${index%2==0?'careem':'uber'}.png'),
+          itemBuilder: (context, index) => Row(
+            children: [
+              Column(
+                children: [
+                  Image.asset(
+                      'packages/miniapp_package/assets/logos/${index % 2 == 0 ? 'careem' : 'uber'}.png'),
+                  const SizedBox(height: 12),
+                  Image.asset(
+                      'packages/miniapp_package/assets/logos/${index % 2 == 1 ? 'sedan' : 'suv'}.png'),
+                ],
+              ),
+              Expanded(
+                child: Column(
+                  children: [
+                    Text("Title"),
+                    Text('sub title sub title sub title sub title sub title '),
+                  ],
+                ),
+              ),
+              ElevatedButton(
+                  onPressed: () => onSuccess("ammar"), child: Text("Let's Go"))
+            ],
           ),
         ),
-      ),
-    );
-  }
+      );
 }

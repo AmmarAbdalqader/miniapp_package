@@ -1,6 +1,6 @@
 name: miniapp_package
 description: "Taxi"
-version: 0.0.3
+version: 0.0.4
 
 environment:
   sdk: ^3.5.0

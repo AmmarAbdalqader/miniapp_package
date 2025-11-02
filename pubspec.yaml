@@ -1,6 +1,7 @@
 name: miniapp_package
 description: "Taxi"
-version: 0.0.7
+homepage:
+version: 0.0.8
 
 environment:
   sdk: ^3.5.0
@@ -16,11 +17,10 @@ dev_dependencies:
   flutter_lints: ^5.0.0
 
 flutter:
+  uses-material-design: true
+
   assets:
-    - assets/logos/careem.png
-    - assets/logos/suv.png
-    - assets/logos/sedan.png
-    - assets/logos/uber.png
+    - assets/logos/
 
   # fonts:
   #   - family: Schyler

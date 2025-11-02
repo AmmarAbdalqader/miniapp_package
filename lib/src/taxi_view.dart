@@ -11,12 +11,12 @@ class TaxiView extends StatelessWidget {
         onTap: () => onSuccess("ammar"),
         child: ListView.separated(
           itemCount: 100,
-          separatorBuilder: (context, index) => const SizedBox(height: 10),
+          separatorBuilder: (context, index) => const Divider(),
           itemBuilder: (context, index) => ListTile(
             title: Text("Title"),
             subtitle:
                 Text('sub title sub title sub title sub title sub title '),
-            leading: Icon(Icons.car_crash),
+            leading: Image.asset('packages/miniapp_package/assets/logos/${index%2==0?'careem':'uber'}.png'),
           ),
         ),
       ),

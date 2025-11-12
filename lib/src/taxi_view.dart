@@ -1,5 +1,5 @@
-import 'package:balady_host_sdk/balady_host_sdk.dart';
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class TaxiView extends StatelessWidget {
   final Function(String data) onSuccess;
@@ -7,35 +7,30 @@ class TaxiView extends StatelessWidget {
   const TaxiView({super.key, required this.onSuccess});
 
   Future<void> requestCamera() async {
-    // Use SDK's permission manager
-    final granted = await BaladyPermissions.request(Permission.camera);
-    if (granted) {
-      // Use camera
-      print('Camera permission granted');
-    } else {
+    var status = await Permission.camera.request();
+    if (status.isDenied) {
       print('Camera permission denied');
+      ///re-ask
+      status = await Permission.camera.request();
+    }
+    else if (status.isPermanentlyDenied){
+      bool opened = await openAppSettings();
+      if (!opened) {
+        print('Could not open app settings.');
+      }
     }
   }
 
-  Future<void> sendEvent() async {
-    // Send event to SuperApp
-    await BaladyHostSDK.sendToSuperApp('purchase_complete', {
-      'orderId': '12345',
-      'amount': 99.99,
-    });
-  }
+  Future<void> sendEvent() async {}
 
-  Future<void> closeApp() async {
-    // Close mini app
-    await BaladyNavigator.close({'result': 'success'});
-  }
+  Future<void> closeApp() async {}
 
   @override
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text('Flutter v3.19.0'),
+          title: const Text('Taxi app'),
           leading: IconButton(
             icon: const Icon(Icons.close),
             onPressed: closeApp,
